@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title> Validation </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
+
+        <script>
+            $(document).ready(function(){
+                $("#user").blur(function(){
+					$("#uservalidation").empty();
+					if($(this).val()=="" || $(this).val()==null)
+					{
+						$("#uservalidation").html("(*) username required..!!");
+					}
+					else{
+						if(!$(this).val().match($FNameLNameRegEx))
+						{
+							$("#uservalidation").html("(*) Invalid username..!!");
+						}
+					}
+				});
+
+                $("#pwd").blur(function(){
+					$("#pwdvalidation").empty();
+					if($(this).val()=="" || $(this).val()==null)
+					{
+						$("#pwdvalidation").html("(*) Password required..!!");
+					}
+					else{
+						if(!$(this).val().match($ConNoRegEx))
+						{
+							$("#pwdvalidation").html("(*) Invalid Password..!!");
+						}
+					}
+				});
+
+                $("#btn").click(function(){
+                    $("#uservalidation").empty();
+					if($("#user").val()=="" || $("#user").val()==null)
+					{
+						$("#uservalidation").html("(*) username required..!!");
+						userFlag=false;
+					}
+					else{
+						if(!$("#user").val().match($FNameLNameRegEx))
+						{
+							$("#uservalidation").html("(*) Invalid username..!!");
+							userFlag=false;
+						}
+						else{
+							userFlag=true;
+						}
+					}
+
+                    $("#pwdvalidation").empty();
+					if($("#pwd").val()=="" || $("#pwd").val()==null)
+					{
+						$("#pwdvalidation").html("(*) password required..!!");
+						pwdFlag=false;
+					}
+					else{
+						if(!$("#pwd").val().match($FNameLNameRegEx))
+						{
+							$("#pwdvalidation").html("(*) Invalid password..!!");
+							pwdFlag=false;
+						}
+						else{
+							pwdFlag=true;
+						}
+					}
+
+                    
+
+                });
+                
+            });
+        </script>
+        <style>
+            small{color: red; }
+
+            #btn{
+                    background-color: bisque;
+                    
+            }
+            #btn:hover {
+                    
+                    background-color: rgb(233, 176, 176);
+            }
+        </style>
+
+        
+</head>
+<body>
+
+        <fieldset>
+            <legend> <h2> Validation Form </h2> </legend>  
+         Username: <input type="text" id="user" placeholder="Enter Username.."> <br>  
+                   <small id="uservalidation"></small> <br> 
+         Password: <input type="text" id="pwd" placeholder="Enter Password.."> <br>  
+                   <small id="pwdvalidation"></small> <br> <br> 
+         <input type="button" id="btn" value="Submit"> 
+         
+        </fieldset>
+</body>
+</html>
